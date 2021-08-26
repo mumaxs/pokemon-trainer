@@ -1,7 +1,11 @@
-<div class="navbar">
-    <a routerLink="/trainer-page" class="nav-links">
-        <p>Profile</p>
+<header class="header">
+  <nav class="navbar">
+    <a routerLink="/trainer-page" routerLinkActive="active" class="nav-links">
+      Profile
     </a>
-    <a routerLink="/catalogue-page" class="nav-links">Catalogue</a>
+    <a routerLink="/catalogue-page" routerLinkActive="active" class="nav-links catalogue">
+      Catalogue
+    </a>
     <button class="log-out" (click)="logout()">Log out</button> 
-</div>
+  </nav>
+</header>
