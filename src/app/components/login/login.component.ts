@@ -13,13 +13,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.localStorageService.getUser() !== null){
-      this.router.navigate(['/trainer-page'])
+      this.router.navigate(['/catalogue-page'])
     }
   }
 
   login(username: string) {
     this.localStorageService.setUser(username)
-    this.router.navigate(['/trainer-page'])
+    this.router.navigate(['/catalogue-page'])
   }
-
 }

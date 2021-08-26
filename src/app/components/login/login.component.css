@@ -1,0 +1,35 @@
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-name {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.login-button {
+  background-color: #ffcc01;
+  color: #2d6ab3;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: all .3s;
+}
+
+.login-button:hover {
+  background-color: #fdda4b;
+  cursor: pointer;
+  transition: all .3s;
+}

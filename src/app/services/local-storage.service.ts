@@ -24,6 +24,7 @@ export class LocalStorageService {
 
   savePokemon(pokemonToSave: string[]) {
     if (this.caughtPokemon !== undefined) {
+      
       let copyCaughtPokemon = this.getCaughtPokemon()
       copyCaughtPokemon.push(pokemonToSave[pokemonToSave.length - 1])
       localStorage.setItem('caughtPokemon', JSON.stringify(copyCaughtPokemon))
@@ -43,11 +44,19 @@ export class LocalStorageService {
       if (copyCaughtPokemon[i].id === id) {        
         copyCaughtPokemon.splice(i, 1);        
       }
-
     }
     localStorage.setItem('caughtPokemon', JSON.stringify(copyCaughtPokemon))
   }
 
-  
-
+  setCaptured(id: number) {
+    console.log('caught', this.caughtPokemon)
+    let capturedPokemon = JSON.parse(this.caughtPokemon!);
+    console.log(capturedPokemon)
+    for (let i = 0; i < capturedPokemon.length; i++) { 
+      if(capturedPokemon[i].id === id) {
+        capturedPokemon[i].captured = true;
+      }
+    }
+    localStorage.setItem('caughtPokemon', JSON.stringify(capturedPokemon))
+  }
 }

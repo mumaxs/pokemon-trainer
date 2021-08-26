@@ -1,10 +1,18 @@
-<p>pokemon-catalogue works!</p>
-
-<div *ngFor="let p of pokemon">
-    <p>{{p.name}}</p>
-    <img src="assets/dream-world/{{p.id}}.svg" alt="img">
-    <button class="select-pokemon" (click)="addToList(p.id, p.name)">Catch!</button>
-    
-    
-    
+<div class="flexbox">
+    <div *ngFor="let p of pokemon" class="pokemon-card">
+        <img src="assets/dream-world/{{p.id}}.svg" alt="img" class="pokemon-img">
+        <div class="options">
+            <div class="option faded" [ngClass]="{'selected': p.captured, 'faded': !p.captured}" id={{p.id}} (click)="addToList(p)">
+              <div class="pokeball unselected">
+                <div class="upper-half"> </div>
+                <div class="lower-half"> </div>
+                <div class="base"> </div>
+                <div class="inner-circle"> </div>
+                <div class="indicator visible"> </div>
+                <div class="indicator-inner"> </div>
+              </div>
+              <div>  <p class="name">{{p.name}}</p> </div>
+            </div>
+        </div>
+    </div>
 </div>

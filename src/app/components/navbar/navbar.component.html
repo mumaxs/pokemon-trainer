@@ -1,10 +1,7 @@
-<div>
-    <ul>
-        <li>
-            <p>Profile</p>
-        </li>
-        <li>
-            <button class="log-out" (click)="logout()">Log out</button>
-        </li>
-    </ul>
+<div class="navbar">
+    <a routerLink="/trainer-page" class="nav-links">
+        <p>Profile</p>
+    </a>
+    <a routerLink="/catalogue-page" class="nav-links">Catalogue</a>
+    <button class="log-out" (click)="logout()">Log out</button> 
 </div>

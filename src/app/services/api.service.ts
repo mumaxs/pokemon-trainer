@@ -7,7 +7,7 @@ import { IPokemon } from '../models/pokemon';
 })
 export class ApiService {
   private url = "https://pokeapi.co/api/v2/pokemon?limit=150/";
-  private pokemon = []
+  private pokemon: IPokemon[] = []
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,7 @@ export class ApiService {
       for (let i = 0; i < pokemon.results.length; i++) {
         pokemon.results[i].id = pokemon.results[i].url.slice(34, pokemon.results[i].url.length-1)
         //console.log(pokemon.results[i].url.lastIndexOf("/", pokemon.results[i].url.lastIndexOf("/")))
+        pokemon.results[i].captured = false;
       }
       this.pokemon = pokemon.results;
     },
@@ -28,5 +29,14 @@ export class ApiService {
     return this.pokemon;
   }
 
+  public getFetchedPokemonSequel(): IPokemon[] {
+    return this.pokemon
+  }
 
+  public catchPokemon(id: number) {
+    for (let index = 0; index < this.pokemon.length; index++) {
+      if (this.pokemon[index].id === id)
+        this.pokemon[index].captured = true;
+    }      
+  }
 }

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  show = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openPokeball(): void {
+    this.show = true;
   }
 
 }
