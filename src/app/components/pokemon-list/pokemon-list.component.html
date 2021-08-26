@@ -1,1 +1,9 @@
 <p>pokemon-list works!</p>
+<div *ngFor="let p of getCaughtPokemon()">
+    
+        <p>{{p.name}}</p>
+        <img src="assets/dream-world/{{p.id}}.svg" alt="img">
+        <button class="release-pokemon" (click)="release(p.id)">Release!</button>
+
+    
+</div>
