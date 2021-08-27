@@ -31,7 +31,7 @@ export class PokemonListComponent implements OnInit {
     return this.localStorageService.getCaughtPokemon()
   }
 
-  release(pokemon: IPokemon) {
-    this.trainer.releasePokemon(pokemon)
+  release(index: number) {
+    this.trainer.releasePokemon(index)
   }
 }

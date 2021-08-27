@@ -29,7 +29,9 @@ export class PokemonCatalogueComponent implements OnInit {
   }
 
   addToList(pokemon: IPokemon): void {
-    this.pokemonApi.catchPokemon(pokemon.id)
-    this.trainer.setCapturedPokemon(pokemon)
+    if (pokemon.captured === false) {
+      this.pokemonApi.catchPokemon(pokemon.id)
+      this.trainer.setCapturedPokemon(pokemon)
+    }
   }
 }

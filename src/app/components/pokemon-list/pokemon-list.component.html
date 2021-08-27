@@ -1,8 +1,8 @@
 <div class="flexbox">
-        <div *ngFor="let p of getCaughtPokemon()" class="pokemon-card">
+        <div *ngFor="let p of getCaughtPokemon(); index as i" class="pokemon-card">
             <img src="assets/dream-world/{{p.id}}.svg" alt="img" class="pokemon-img">
             <div class="options">
-                <div class="option faded" [ngClass]="{'selected': p.captured, 'faded': !p.captured}" (click)="release(p)" id={{p.id}}>
+                <div class="option faded" [ngClass]="{'selected': p.captured, 'faded': !p.captured}" (click)="release(i)" >
                   <div class="pokeball unselected">
                     <div class="upper-half"> </div>
                     <div class="lower-half"> </div>
