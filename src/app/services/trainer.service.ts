@@ -21,6 +21,7 @@ export class TrainerService {
     for (let i = 0; i < caughtPokemon.length; i++) {
       if (caughtPokemon[i].id === pokemon.id) {
         caughtPokemon.splice(i, 1);
+        console.log(caughtPokemon)
       }
     }
     localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon))
