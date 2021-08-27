@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { IPokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
-  caughtPokemon!: string | null;
 
   constructor() { }
 
@@ -22,41 +21,19 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
-  savePokemon(pokemonToSave: string[]) {
-    if (this.caughtPokemon !== undefined) {
-      
-      let copyCaughtPokemon = this.getCaughtPokemon()
-      copyCaughtPokemon.push(pokemonToSave[pokemonToSave.length - 1])
-      localStorage.setItem('caughtPokemon', JSON.stringify(copyCaughtPokemon))
-    }else{
+  savePokemon(pokemonToSave: IPokemon[]) {
+    let caughtPokemon = this.getCaughtPokemon()
+    if (caughtPokemon !== null) {
+      caughtPokemon = this.getCaughtPokemon()
+      caughtPokemon.push(pokemonToSave[pokemonToSave.length - 1])
+      localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon))
+    } else {
       localStorage.setItem('caughtPokemon', JSON.stringify(pokemonToSave))
     }
   }
 
   getCaughtPokemon() {
-    this.caughtPokemon = localStorage.getItem('caughtPokemon')
-    return JSON.parse(this.caughtPokemon!);
-  }
-
-  removePokemonFromList(id: number) {
-    let copyCaughtPokemon = JSON.parse(this.caughtPokemon!)
-    for (let i = 0; i < copyCaughtPokemon.length; i++) {
-      if (copyCaughtPokemon[i].id === id) {        
-        copyCaughtPokemon.splice(i, 1);        
-      }
-    }
-    localStorage.setItem('caughtPokemon', JSON.stringify(copyCaughtPokemon))
-  }
-
-  setCaptured(id: number) {
-    console.log('caught', this.caughtPokemon)
-    let capturedPokemon = JSON.parse(this.caughtPokemon!);
-    console.log(capturedPokemon)
-    for (let i = 0; i < capturedPokemon.length; i++) { 
-      if(capturedPokemon[i].id === id) {
-        capturedPokemon[i].captured = true;
-      }
-    }
-    localStorage.setItem('caughtPokemon', JSON.stringify(capturedPokemon))
+    let caughtPokemon = localStorage.getItem('caughtPokemon')
+    return JSON.parse(caughtPokemon!);
   }
 }
