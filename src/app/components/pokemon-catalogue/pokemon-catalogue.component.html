@@ -11,7 +11,7 @@
                 <div class="indicator visible"> </div>
                 <div class="indicator-inner"> </div>
               </div>
-              <div>  <p class="name">{{p.name}}</p> </div>
+              <div> <p class="name" [ngClass]="{'active': p.captured}">{{p.name}}</p></div>
             </div>
         </div>
     </div>

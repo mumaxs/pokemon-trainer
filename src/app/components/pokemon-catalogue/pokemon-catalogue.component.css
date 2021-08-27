@@ -22,6 +22,35 @@
   width: 100%;
 }
 
+.name:hover {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.active {
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e6d700, 0 0 40px #e6d700, 0 0 50px #e6d700, 0 0 60px #e6d700, 0 0 70px #e6d700;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #fffc4d, 0 0 40px #fffc4d, 0 0 50px #fffc4d, 0 0 60px #fffc4d, 0 0 70px #fffc4d, 0 0 80px #fffc4d;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60000, 0 0 40px #e60000, 0 0 50px #e60000, 0 0 60px #e60000, 0 0 70px #e60000;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d, 0 0 50px #ff4d4d, 0 0 60px #ff4d4d, 0 0 70px #ff4d4d, 0 0 80px #ff4d4d;
+  }
+}
+
 .pokemon-img {
   width: 100px;
   height: 100px;
@@ -35,9 +64,7 @@ body {
 }
 
 .options {
-  /* margin: 80px auto; */
   width: fit-content;
-  /* background-color: #f15324; */
 }
 
 .options .option {
@@ -49,10 +76,6 @@ body {
   opacity: 1;
   transition: opacity 250ms ease-in-out;
 }
-
-/* .options .option div {
-  margin-right: 30px;
-} */
 
 .options .option.faded {
   opacity: 0.8;
