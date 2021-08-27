@@ -7,20 +7,18 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {  
+export class NavbarComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    if(this.localStorageService.getUser() === null){
+    if (this.localStorageService.getUser() === null) {
       this.router.navigate([''])
-    } 
-    
+    }
   }
 
   logout() {
     this.localStorageService.clearLocalStorage();
     this.router.navigate([''])
   }
-
 }

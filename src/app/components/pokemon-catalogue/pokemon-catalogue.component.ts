@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IPokemon, Pokemon } from 'src/app/models/pokemon';
+import { IPokemon } from 'src/app/models/pokemon';
 import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
   selector: 'app-pokemon-catalogue',
@@ -10,12 +11,14 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./pokemon-catalogue.component.css']
 })
 export class PokemonCatalogueComponent implements OnInit {
-  caughtPokemon: Pokemon[] = [];
 
-  constructor(private pokemonApi: ApiService, private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(private pokemonApi: ApiService,
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private trainer: TrainerService) { }
 
   ngOnInit(): void {
-    if(this.localStorageService.getUser() === null){
+    if (this.localStorageService.getUser() === null) {
       this.router.navigate([''])
     }
     this.pokemonApi.getPokemon();
@@ -25,13 +28,8 @@ export class PokemonCatalogueComponent implements OnInit {
     return this.pokemonApi.getFetchedPokemon
   }
 
-  addToList(pokemon: Pokemon): void{
-    this.caughtPokemon.push(pokemon)
-    //ToDO :this.localStorageService.savePokemon(this.caughtPokemon)
-    console.log(this.caughtPokemon)
-    // this.localStorageService.setCaptured(id)
+  addToList(pokemon: IPokemon): void {
     this.pokemonApi.catchPokemon(pokemon.id)
+    this.trainer.setCapturedPokemon(pokemon)
   }
-
-
 }

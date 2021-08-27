@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IPokemon } from 'src/app/models/pokemon';
+import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,19 +12,26 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor(private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(private localStorageService: LocalStorageService,
+    private router: Router,
+    private pokemonApi: ApiService,
+    private trainer: TrainerService) { }
 
   ngOnInit(): void {
-    if(this.localStorageService.getUser() === null){
+    if (this.localStorageService.getUser() === null) {
       this.router.navigate([''])
-    } 
+    }
   }
 
-  getCaughtPokemon(){
+  get pokemon(): IPokemon[] {
+    return this.pokemonApi.getFetchedPokemon
+  }
+
+  getCaughtPokemon() {
     return this.localStorageService.getCaughtPokemon()
   }
 
-  release(id: number) {
-    this.localStorageService.removePokemonFromList(id);
+  release(pokemon: IPokemon) {
+    this.trainer.releasePokemon(pokemon)
   }
 }
