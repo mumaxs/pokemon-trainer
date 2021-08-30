@@ -28,6 +28,10 @@ export class PokemonCatalogueComponent implements OnInit {
     return this.pokemonApi.getFetchedPokemon
   }
 
+  /**
+   * Method that check if pokemon is captured so that you cannot capture more than one of a kind.
+   * @param pokemon 
+   */
   addToList(pokemon: IPokemon): void {
     if (pokemon.captured === false) {
       this.pokemonApi.catchPokemon(pokemon.id)

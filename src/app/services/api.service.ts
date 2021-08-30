@@ -11,6 +11,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Fetch pokemon from API.
+   */
   getPokemon(): void {
     this.http.get(this.url).subscribe((pokemon: any) =>{
       for (let i = 0; i < pokemon.results.length; i++) {
@@ -32,6 +35,10 @@ export class ApiService {
     return this.pokemon
   }
 
+  /**
+   * Sets a pokemon as captured.
+   * @param id of the pokemon
+   */
   public catchPokemon(id: number) {
     for (let index = 0; index < this.pokemon.length; index++) {
       if (this.pokemon[index].id === id)

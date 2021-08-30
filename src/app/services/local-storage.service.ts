@@ -21,6 +21,10 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
+  /**
+   * Method that checks if a caughtpokemon array exists, then update or create one.
+   * @param pokemonToSave - Pokemon that are saved into the localstorage.
+   */
   savePokemon(pokemonToSave: IPokemon[]) {
     let caughtPokemon = this.getCaughtPokemon()
     if (caughtPokemon !== null) {

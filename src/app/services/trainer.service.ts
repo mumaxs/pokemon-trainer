@@ -13,17 +13,10 @@ export class TrainerService {
     let caughtPokemon: IPokemon[] = [];
     caughtPokemon.push(pokemon)
     this.localStorageService.savePokemon(caughtPokemon)
-    console.log(caughtPokemon)
   }
   
   releasePokemon(index: number) {
     let caughtPokemon = this.localStorageService.getCaughtPokemon()
-    /* for (let i = 0; i < caughtPokemon.length; i++) {
-      if (caughtPokemon[i].id === pokemon.id) {
-        caughtPokemon.splice(i, 1);
-        console.log(caughtPokemon)
-      }
-    } */
     caughtPokemon.splice(index, 1)
     localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon))
   }
