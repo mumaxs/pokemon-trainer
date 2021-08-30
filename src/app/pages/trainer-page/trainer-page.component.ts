@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trainer-page.component.css']
 })
 export class TrainerPageComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
